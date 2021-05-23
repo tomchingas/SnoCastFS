@@ -1,0 +1,26 @@
+.info-container {
+  grid-area: info;
+  border-radius: 15px;
+  background-color: rgba(91, 171, 245, 0.5);
+  height: 1fr;
+}
+
+.info-text {
+  padding: 10px;
+  margin: 10px;
+}
+
+#info-header{
+  color: white;
+  font-size: 5em;
+}
+
+#info-description{
+  font-size: 2em;
+}
+
+@media only screen and (max-width: 800px) {
+  .info-container {
+    width: 100%;
+  }
+}

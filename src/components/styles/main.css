@@ -1,0 +1,25 @@
+.main-content-grid {
+  grid-gap: 15px;
+  grid-template-areas: "info map";
+  grid-template-columns: 25vw 1fr;
+}
+
+.single-container {
+  border-radius: 15px;
+  background-color: rgba(91, 171, 245, 0.5);
+  padding: 20px;
+}
+
+@media only screen and (max-width: 800px) {
+  .main-content-grid{
+    grid-gap: unset;
+  }
+  
+  .content-template {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 4px;
+  }
+}
