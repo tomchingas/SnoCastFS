@@ -11,10 +11,19 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+import django_on_heroku
+import dotenv
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
+dotenv_file = os.path.join(BASE_DIR, ".env")
+# .env file does not exist on heroku, so this will only run locally
+# the variables stored in the .env file are stored as config variables on heroku
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -25,7 +34,7 @@ SECRET_KEY = '=(1jh2k6uuba+av##lp(s7pkdei-2_f=r9ayvkhr-wa+e+r4go'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'snocast-practice.herokuapp.com']
 
 
 # Application definition
@@ -91,12 +100,10 @@ WSGI_APPLICATION = 'snocast_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# uses database location in .env file if running locally
+# or if running on heroku, tells heroku where to grab the db
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 
 # Password validation
@@ -136,3 +143,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# configure Django app for heroku
+django_on_heroku.settings(locals())
+
+# options for running SQLite locally (heroku runs PostgresQL, which requires the ssl)
+options = DATABASES['default'].get('OPTIONS', {})
+options.pop('sslmode', None)
