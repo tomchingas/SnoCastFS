@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
-import django_on_heroku
+import django_heroku
 import dotenv
 import dj_database_url
 
@@ -145,7 +145,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # configure Django app for heroku
-django_on_heroku.settings(locals())
+django_heroku.settings(locals())
 
 # options for running SQLite locally (heroku runs PostgresQL, which requires the ssl)
 options = DATABASES['default'].get('OPTIONS', {})
