@@ -21,7 +21,7 @@ const Map = () => {
     const zoomLevel = 6
 
     // grab data from db
-    const url = 'http://127.0.0.1:8000/api/'
+    const url = 'http://127.0.0.1:8000/api/accidents/'
 
     useEffect(async () => {
         const response = await fetch(url)

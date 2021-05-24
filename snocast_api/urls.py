@@ -15,10 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from rest_framework import routers
+from podcast_data import views
+
+# making call to /api/accidents will return list of all avalanche accidents
+router = routers.DefaultRouter()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('podcast_data.urls')),
+    path('api/', include(router.urls)),
+    path('api/accidents/', views.ListAvalanche_Accident.as_view(), name='accidents'),
 ]
 
 

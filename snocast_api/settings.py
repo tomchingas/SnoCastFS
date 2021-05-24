@@ -32,7 +32,7 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = '=(1jh2k6uuba+av##lp(s7pkdei-2_f=r9ayvkhr-wa+e+r4go'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', 'snocast-practice.herokuapp.com']
 
@@ -59,6 +59,7 @@ REST_FRAMEWORK = {
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -70,18 +71,16 @@ MIDDLEWARE = [
 ]
 
 # Allows the frontend (running on localhost:3000) to get data from python server
-# Will likely need to play around with this for heroku support
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000'
+   'http://localhost:3000'
 ]
-
 
 ROOT_URLCONF = 'snocast_api.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'build')], # points to Reacts build directory after heroku runs 'npm run build' during deployment
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -142,7 +141,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+# Whitenoise is used to serve static files on heroku
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'build/static')
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # configure Django app for heroku
 django_heroku.settings(locals())
