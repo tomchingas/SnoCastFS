@@ -23,6 +23,6 @@ yarn-error.log*
 
 
 # Backend Specific
-/venvSnoCast
+venvSnoCast/
 __pycache__
-
+staticfiles/
