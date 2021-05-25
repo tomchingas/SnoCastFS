@@ -19,9 +19,9 @@ import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
-dotenv_file = os.path.join(BASE_DIR, ".env")
 # .env file does not exist on heroku, so this will only run locally
 # the variables stored in the .env file are stored as config variables on heroku
+dotenv_file = os.path.join(BASE_DIR, ".env")
 if os.path.isfile(dotenv_file):
     dotenv.load_dotenv(dotenv_file)
 
@@ -92,6 +92,7 @@ TEMPLATES = [
         },
     },
 ]
+print(BASE_DIR)
 
 WSGI_APPLICATION = 'snocast_api.wsgi.application'
 

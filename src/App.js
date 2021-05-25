@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {BrowserRouter, Route, Switch } from 'react-router-dom'
 import Snowfall from 'react-snowfall'
+import axios from 'axios'
 
 import { GetCastContext } from './components/GetCastContext.jsx'
 
@@ -14,6 +15,9 @@ import ReportIssue from './components/ReportIssue.jsx'
 import PageNotFound from './components/PageNotFound.jsx'
 
 function App() {
+
+  axios.defaults.xsrfCookieName = 'csrftoken'
+  axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
   const [castInfoConditions, setCastInfoConditions] = useState({})
 
