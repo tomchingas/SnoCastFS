@@ -7,13 +7,21 @@ from django.utils import timezone
 
 
 class Avalanche_Accident(models.Model):
-    Avalanche_Number = models.IntegerField()
-    Name = models.CharField(max_length=1000, default='INPUT NAME')
-    Date = models.CharField(max_length=100, default='INPUT DATE')
-    State = models.CharField(max_length=100, default='INPUT STATE')
-    Lat = models.DecimalField(max_digits=50, decimal_places=10, default=9999)
-    Long = models.DecimalField(max_digits=50, decimal_places=10, default=9999)
+    avalanche_number = models.IntegerField(default=9999)
+    url = models.CharField(max_length=1000, default='INPUT URL')
+    location = models.CharField(max_length=1000, default='INPUT NAME')
+    state = models.CharField(max_length=100, default='INPUT STATE')
+    date = models.CharField(max_length=100, default='INPUT DATE')
+    summary_description = models.CharField(max_length=1000, default='INPUT SUMMARY DESCRIPTION')
+    primary_activity = models.CharField(max_length=1000, default='INPUT NAME')
+    primary_travel_mode = models.CharField(max_length=1000, default='INPUT NAME')
+    location_setting = models.CharField(max_length=1000, default='INPUT NAME')
+    killed = models.IntegerField(default = 9999)
+    type = models.CharField(max_length=1000, default='INPUT NAME')
+    latitude = models.DecimalField(max_digits=50, decimal_places=12, default=9999)
+    longitude = models.DecimalField(max_digits=50, decimal_places=12, default=9999)
+    html = models.CharField(max_length=100000, default='INPUT HTML')
     pub_date = models.DateTimeField('date published')
+
     def __str__(self):
         return self.Name
-
