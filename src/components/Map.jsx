@@ -1,24 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
 import GoogleMap from 'google-map-react'
-
+import { MapContainer, TileLayer, Marker, Tooltip } from 'react-leaflet'
 
 import './styles/map.css'
-
-import MapMarker from './MapMarker.jsx'
-
 
 const Map = () => {
 
 
     const [reportData, setReportData] = useState(false)
-
-    const API_KEY = `${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`;
-    const location = {
-        address: '',
-        lat: 45.676998,
-        lng: -111.042931,
-    }
-    const zoomLevel = 6
 
     // grab data from db
     const url = 'http://127.0.0.1:8000/api/accidents/'
@@ -30,12 +19,31 @@ const Map = () => {
         console.log(response)
     }, [])
 
-
     return (
-        <div className="map flex-item">
+        <div id="map-container" className="flex-item">
             <h2 style={{ textAlign: 'center', paddingBottom: '7px' }}>Select location to receive report</h2>
 
-            <div className="map-container">
+            <div id="map">
+                <MapContainer center={[40.7607793, -111.8910474]} zoom={3} scrollWheelZoom={true}>
+                    <TileLayer
+                        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+
+                    {/* render map pins once the data has been fetched from server */}
+                    {reportData && reportData.map(report =>
+                        <Marker
+                            position={[report.Lat, report.Long]}
+                            onClick={console.log('clicked', report.Name)}>
+                            <Tooltip>
+                                {report.Name}
+                            </Tooltip>
+                        </Marker>
+                    )}
+                </MapContainer>
+            </div>
+
+            {/* <div className="map-container">
                 <GoogleMap
                     resetBoundsOnResize={true}
                     style={{ maxWidth: '100%', height: '68vh' }}
@@ -55,9 +63,9 @@ const Map = () => {
                             color="red"
                         />
                     )}
-                </GoogleMap>
-            </div>
-        </div>
+                </GoogleMap> 
+            </div> */}
+        </div >
     )
 }
 export default Map;

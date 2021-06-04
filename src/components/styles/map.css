@@ -1,12 +1,16 @@
-.map {
-  grid-area: map;
-  border-radius: 15px;
-  background-color: rgba(91, 171, 245, 0.5);
-  padding: 20px;
-  padding-top: 10px;
+#map{
+    height: 100%;
 }
 
-.map-container {
-  overflow-x: "hidden";
-  overflow-y: "hidden";
+#map-container {
+    grid-area: map;
+    border-radius: 15px;
+    background-color: rgba(91, 171, 245, 0.5);
+    padding: 20px;
+    padding-top: 10px;
+    min-height: 600px;
+  }
+
+.leaflet-container{
+    height: 93%;
 }
