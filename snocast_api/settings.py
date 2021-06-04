@@ -32,7 +32,7 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', 'snocast-practice.herokuapp.com']
 
@@ -92,7 +92,6 @@ TEMPLATES = [
         },
     },
 ]
-print(BASE_DIR)
 
 WSGI_APPLICATION = 'snocast_api.wsgi.application'
 
@@ -147,10 +146,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'build', 'static')
+    os.path.join(BASE_DIR, 'build/static') # points to the Static files for the react app
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # points to the static files for the django app
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
