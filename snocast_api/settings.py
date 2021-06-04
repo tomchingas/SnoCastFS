@@ -160,3 +160,8 @@ django_heroku.settings(locals())
 # options for running SQLite locally (heroku runs PostgresQL, which requires the ssl)
 options = DATABASES['default'].get('OPTIONS', {})
 options.pop('sslmode', None)
+
+
+# Set media file path and url for audio files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

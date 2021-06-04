@@ -4,11 +4,19 @@ from .models import Avalanche_Accident
 class Avalanche_AccidentSerializer(serializers.ModelSerializer):
     class Meta:
         fields = (
-            'Name',
-            'Date',
-            'State',
-            'Lat',
-            'Long',
-            'pub_date',
+            'avalanche_number',
+            'url',
+            'location',
+            'state',
+            'date',
+            'summary_description',
+            'primary_activity',
+            'primary_travel_mode',
+            'location_setting',
+            'killed',
+            'type',
+            'latitude',
+            'longitude',
+            'html',
         )
         model = Avalanche_Accident

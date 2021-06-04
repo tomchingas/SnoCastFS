@@ -18,6 +18,10 @@ from django.urls import include, path
 from rest_framework import routers
 from podcast_data import views
 
+# audio files
+from django.conf import settings
+from django.conf.urls.static import static
+
 # making call to /api/accidents will return list of all avalanche accidents
 router = routers.DefaultRouter()
 
@@ -27,4 +31,7 @@ urlpatterns = [
     path('api/accidents/', views.ListAvalanche_Accident.as_view(), name='accidents'),
 ]
 
+if settings.DEBUG:
+    urlpatterns  += static(settings.MEDIA_URL,
+                            document_root=settings.MEDIA_ROOT)
 
