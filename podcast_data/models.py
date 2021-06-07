@@ -21,6 +21,7 @@ class Avalanche_Accident(models.Model):
     latitude = models.DecimalField(max_digits=50, decimal_places=12, default=9999)
     longitude = models.DecimalField(max_digits=50, decimal_places=12, default=9999)
     html = models.CharField(max_length=100000, default='INPUT HTML')
+    audio_url = models.CharField(max_length=2000, default='INPUT AUDIO URL')
     pub_date = models.DateTimeField('date published')
 
     def __str__(self):

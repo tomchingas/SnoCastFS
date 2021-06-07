@@ -186,23 +186,6 @@ for j in range(1, 796, 1):
             #os.system(f'pico2wave -w accident_audio_{j}.wav "$(cat accident_text_{j}.txt)"')
 
 
-            # move files to appropriate folders
-            #current_dir_path = os.path.dirname(os.path.realpath(__file__))
-
-            #shutil.move(f'{current_dir_path}/accident_html_{j}.html', f'{current_dir_path}/html_files/accident_html_{j}.html')
-
-            #shutil.move(f'{current_dir_path}/accident_audio_{j}.wav', f'{current_dir_path}/audio_files/accident_audio_{j}.wav')
-
-            #shutil.move(f'{current_dir_path}/accident_text_{j}.txt', f'{current_dir_path}/text_files/accident_text_{j}.txt')
-
-            #shutil.move(f'/home/tom/SnoCast/Back End/Django/SnocastBackend/accident_html_{j}.html', f'/home/tom/SnoCast/Back End/Django/SnocastBacken/html_files/accident_html_{j}.html')
-
-            #shutil.move(f'/home/tom/SnoCast/Back End/Django/SnocastBackend/accident_audio_{j}.wav', f'/home/tom/SnoCast/Back End/Django/SnocastBacken/audio_files/accident_audio_{j}.wav')
-
-            #shutil.move(f'/home/tom/SnoCast/Back End/Django/SnocastBacken/accident_text_{j}.txt', f'/home/tom/SnoCast/Back End/Django/SnocastBacken/text_files/accident_text_{j}.txt')
-
-
-
 # get lat and long
 driver = webdriver.Firefox()
 

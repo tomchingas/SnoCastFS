@@ -17,8 +17,13 @@ localhost:8000/media/"filename"
 
 
 
-changed fields and added field names to database:
-- the field names match the names on the US Avalance accident report website
+to download audio file from AWS S3:
+- use the URL in the database for the avalanche accident from the 'audio_url' field
+     - exampe 'https://snocast-media.s3-us-west-2.amazonaws.com/accident_audio_2.wav'
+
+
+
+SQLite database:
 - list of fields:
 
     avalanche_number
@@ -35,5 +40,6 @@ changed fields and added field names to database:
     latitude
     longitude
     html
+    audio_url
     pub_date
 

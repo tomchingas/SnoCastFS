@@ -18,5 +18,6 @@ class Avalanche_AccidentSerializer(serializers.ModelSerializer):
             'latitude',
             'longitude',
             'html',
+            'audio_url',
         )
         model = Avalanche_Accident
