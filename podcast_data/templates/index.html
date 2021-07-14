@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  padding: 20px;
+  background: #f1f1f1;
+}
+
+.header {
+  padding: 2px;
+  font-size: 40px;
+  text-align: center;
+  background: white;
+}
+
+.leftcolumn {   
+  float: left;
+  width: 100%;
+}
+
+.card {
+   background-color: white;
+   padding: 20px;
+   margin-top: 20px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h2>Avalanche Accidents</h2>
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+    {% for avalanche_accident in avalanche_accidents reversed %}
+    <div class="card">
+        <h2>{{avalanche_accident.location}}</h2>
+        <h3>{{avalanche_accident.state}}</h3>
+        <h3>{{avalanche_accident.date}}</h3>
+        <h3>{{avalanche_accident.summary_description}}</h3>
+        <h3>Primary Activity: {{avalanche_accident.primary_activity}}</h3>
+        <h3>Travel Mode: {{avalanche_accident.primary_travel_mode}}</h3>
+        <h3>Location Setting: {{avalanche_accident.location_setting}}</h3>
+        <h3>Killed: {{avalanche_accident.killed}}</h3>
+        <h3>Avalanche Type: {{avalanche_accident.type}}</h3>
+        <h3>{{avalanche_accident.latitude}}</h3>
+        <h3>{{avalanche_accident.longitude}}</h3>
+        <h3>{{avalanche_accident.url}}</h3>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+</body>
+</html>

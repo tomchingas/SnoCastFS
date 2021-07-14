@@ -30,7 +30,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api/accidents/', views.ListAvalanche_Accident.as_view(), name='accidents'),
-    re_path('.*', TemplateView.as_view(template_name='index.html')),
+    #re_path('.*', TemplateView.as_view(template_name='index.html')),
+    path('', include('podcast_data.urls')),
 ]
 
 if settings.DEBUG:

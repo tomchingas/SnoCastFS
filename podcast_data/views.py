@@ -24,3 +24,7 @@ class Assets(View):
                 return HttpResponse(file.read(), content_type='application/javascript')
         else:
             return HttpResponseNotFound()
+
+def index(request):
+    avalanche_accidents = Avalanche_Accident.objects.all()
+    return render(request, 'index.html', {'avalanche_accidents': avalanche_accidents})
